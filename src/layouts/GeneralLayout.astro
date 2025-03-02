@@ -1,0 +1,63 @@
+---
+import Sidebar from "../components/Sidebar.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+    <title>Conexiones</title>
+</head>
+<body>
+    <div class="grid">
+        <div>
+            <Sidebar/>
+        </div>
+        <div>
+            <slot name="content" />
+
+        </div>
+    </div>
+
+</body>
+</html>
+
+<style>
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 7fr;
+    grid-template-rows: 100vh;
+    grid-template-areas: "sidebar content";
+    
+    height: 100vh;
+}
+
+	body {
+		padding: 0;
+		margin:0;
+        background-color: #000b16;
+        color: #BEBEFE;
+
+	}
+
+	#title {
+		font-family: "Jersey 25", serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 3rem;
+		color: white;
+	}
+
+	h2 {
+		font-family: "Jersey 25", serif;
+		font-weight: 400;
+		font-style: normal;
+		font-size: 2rem;
+		color: white;
+	}
+</style>

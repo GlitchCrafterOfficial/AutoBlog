@@ -1,16 +1,122 @@
 ---
-
+import GeneralLayout from "../layouts/GeneralLayout.astro";
+import PostCard from "../components/PostCard.astro";
+import posts from "../data/posts";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<GeneralLayout>
+    <main slot="content" class="container">
+        <h1 id="title">Índice</h1>
+
+        <section class="section">
+            <h2 class="section-title">Últimos Posts</h2>
+            <div id="postContainer">
+                {posts.map(post => (
+                    <PostCard {...post} />
+                ))}
+            </div>
+        </section>
+
+
+    </main>
+</GeneralLayout>
+
+<style>
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    #title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        color: #FFFF;
+        text-align: center;
+        position: relative;
+        padding-bottom: 0.5rem;
+    }
+
+    #title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(to right, #6366f1, #8b5cf6);
+        border-radius: 2px;
+    }
+
+    .section {
+        margin-bottom: 3rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        color: #FFFF;
+        border-left: 4px solid #6366f1;
+        padding-left: 1rem;
+    }
+
+    #postContainer {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .featured-posts {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .featured-posts li {
+        margin-bottom: 0.75rem;
+        padding: 0.5rem;
+        border-radius: 0.375rem;
+        background-color: #f9fafb;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .featured-posts li:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .featured-posts a {
+        display: block;
+        color: #4b5563;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        transition: color 0.2s;
+    }
+
+    .featured-posts a:hover {
+        color: #6366f1;
+    }
+
+    .connections-container {
+        background-color: #f9fafb;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        min-height: 100px;
+    }
+
+    @media (max-width: 768px) {
+        #title {
+            font-size: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+        }
+        
+        #postContainer {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

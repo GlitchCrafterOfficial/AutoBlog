@@ -1,0 +1,145 @@
+---
+import LogoMobile from "./vectors/main/LogoMobile.astro"
+---
+
+<span class="toggleMobile">[ X ]</span>
+<aside id="sidebarMobile">
+    <div id='logoCont' class="logo-container">
+        <LogoMobile />
+    </div>
+<br/>
+    <ul id='linkList' class="links">
+        <li id="singleLink" class="link">🏠 </li>
+        <li id="singleLink" class="link">📃 </li>
+        <li id="singleLink" class="link">⛓️ </li>
+        <li id="singleLink" class="link">🔎 </li>
+    </ul>
+</aside>
+
+<script>
+    const svg = document.querySelector('svg');
+    
+    
+    const collapse = document.querySelector('.toggleMobile') as HTMLInputElement;
+    
+    const aside = document.querySelector('#sidebarMobile') 
+    // When the aside is collapsed toggler has the content [->] and when it is expanded it has the content [X] 
+
+    
+    collapse?.addEventListener('click', () => {
+        console.log('click')
+        aside?.classList.toggle('hiddenMobile');
+        if (collapse.textContent === '[ X ]') {
+            collapse.textContent = '[ -> ]';
+        } else {
+            collapse.textContent = '[ X ]';
+        }
+    });
+</script>
+
+<style>
+
+    .hiddenMobile {
+        margin-left: -20%;
+    }
+
+    .label-collapsed {
+        position: absolute;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        width: 6rem;
+        background-color: #001326;
+
+    }
+    .link-collapsed {
+        cursor: pointer;
+        
+    }
+
+    .hide-text {
+        display: none;
+    }
+    .push-left {
+        margin-right: 7%;
+    }
+    .push-right {
+        margin-left: 85%;
+        margin-top: 1rem;
+    }
+    
+    .mini {
+        width: 20% ;
+        height: 20%;
+    }
+    .hidden {
+        margin-left: -16%;
+    }
+    /* Toggle botón centrado */
+    .toggleMobile {
+        z-index: 100;
+        position: absolute;
+        padding-left: 1.5rem;
+        padding-top: 1rem;
+
+        font: bold;
+
+    }
+    
+    .toggleMobile:hover {
+        color: #FFD700;
+        background-color: rgba(0, 19, 38, 0.8);
+    }
+
+
+
+  
+    .link {
+        margin-top: 1.5rem;
+        text-shadow: 1px 1px 0px gray;
+        
+    }
+
+    .link:hover {
+        cursor: pointer;
+        color: #FFD700;
+        text-shadow: 1px 1px 0px #FFD700;
+        
+    }
+
+
+
+
+    .links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        margin-top: 10rem;
+        text-align: center;
+
+    }
+
+    .logo-container {
+        margin-top: 5rem;
+        margin-left: .5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    aside {
+        z-index: 10;
+        /* Comic style */
+        display: block;
+        position: absolute;
+        width: 20%;
+        height: 100vh;
+        background-color: #001326;
+        /* Black comic shadow */
+        box-shadow: 2px 0 2px 1px rgb(0, 0, 0);
+        
+    }
+
+    
+
+
+</style>

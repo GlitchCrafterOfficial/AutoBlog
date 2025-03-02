@@ -1,0 +1,225 @@
+---
+const { 
+  title = "Redes neuronales - Redes neuronales densas", 
+  description = "En este post, vamos a ver los fundamentos de las redes neuronales densas, las cuales son sin duda, uno de los mejores ejemplos para entender redes neuronales mas avanzadas.",
+  image = "https://docs.astro.build/assets/rose.webp",
+  url = "/posts/redes_neuronales_1",
+  author = "Glitchcrafter",
+  date = "01/03/2025",
+  category = "IA",
+  readingTime = 5
+} = Astro.props;
+---
+
+<a href={url} class="card-link">
+  <article class="card">
+    <div class="image-container glowing-shadow">
+      <img src={image} alt={title} />
+      <span class="category-badge">{category}</span>
+    </div>
+    
+    <div class="card-content">
+      <h2 class="card-title">{title}</h2>
+      
+      <p class="card-description">{description}</p>
+      
+      <div class="card-meta">
+        <div class="meta-left">
+          <span class="author">👤 {author}</span>
+          <span class="reading-time">⏱️ {readingTime} min</span>
+        </div>
+        <div class="meta-right">
+          <span class="date">📅 {date}</span>
+        </div>
+      </div>
+    </div>
+  </article>
+</a>
+
+<style>
+   body {
+        font-family: "Jersey 25", serif;
+        font-weight: 400;
+        font-style: normal;
+   }
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .card-link:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card {
+    background-color: rgba(0, 27, 46, 0.5);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 1px solid rgba(74, 143, 231, 0.1);
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(74, 143, 231, 0.3);
+    border-color: rgba(74, 143, 231, 0.3);
+  }
+  
+  .image-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  }
+  
+  .glowing-shadow {
+    position: relative;
+  }
+  
+  .glowing-shadow::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, #4a8fe7, transparent, #4a8fe7);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .card:hover .glowing-shadow::before {
+    opacity: 0.5;
+    animation: border-glow 4s ease-in-out infinite;
+  }
+  
+  @keyframes border-glow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+  }
+  
+  .image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .card:hover .image-container img {
+    transform: scale(1.05);
+  }
+  
+  .category-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 19, 38, 0.8);
+    color: #4a8fe7;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    z-index: 2;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(74, 143, 231, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover .category-badge {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+  }
+  
+  .card-content {
+    padding: 1.2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card-title {
+    font-family: "Jersey 25", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5rem;
+    color: white;
+    margin: 0 0 0.8rem;
+    line-height: 1.3;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .card-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 2px;
+    width: 60px;
+    background: linear-gradient(90deg, #4a8fe7, transparent);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+  
+  .card:hover .card-title::after {
+    width: 100%;
+  }
+  
+  .card-description {
+    color: #b8c4d0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+    flex-grow: 1;
+  }
+  
+  .card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #a0aec0;
+    margin-top: auto;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(74, 143, 231, 0.1);
+  }
+  
+  .meta-left, .meta-right {
+    display: flex;
+    gap: 0.8rem;
+  }
+  
+  .author, .reading-time, .date {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .card-title {
+      font-size: 1.3rem;
+    }
+    
+    .card-description {
+      font-size: 0.9rem;
+    }
+    
+    .card-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  }
+</style>
