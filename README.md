@@ -38,8 +38,8 @@ Este repositorio está diseñado para servir como punto de partida para tu propi
 
 ```sh
 # Clonar el repositorio
-git clone https://github.com/tu-usuario/super-blog.git mi-blog-personal
-cd mi-blog-personal
+git clone https://github.com/GlitchCrafterOfficial/glitchcrafter.github.io blog
+cd blog
 
 # Instalar dependencias
 pnpm install
