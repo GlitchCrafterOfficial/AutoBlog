@@ -1,7 +1,6 @@
 name: Deploy to GitHub Pages
 
 on:
-
   push:
     branches: [ main ]
   workflow_dispatch:
@@ -17,9 +16,25 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+        
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.10.0
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'pnpm'
+          
       - name: Install, build, and upload your site
         uses: withastro/action@v3
-
+        with:
+          path: .
+          node-version: 18
+          package-manager: pnpm
+          
   deploy:
     needs: build
     runs-on: ubuntu-latest
