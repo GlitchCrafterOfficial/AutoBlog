@@ -81,6 +81,7 @@ image:
     alt: 'Descripción de la imagen'
 tags: ["tecnología", "programación", "web"]
 ---
+```
 
 Tu contenido va aquí. Puedes usar **Markdown** con todas sus características.
 
