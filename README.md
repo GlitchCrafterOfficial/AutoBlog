@@ -69,6 +69,7 @@ Para crear un nuevo post:
 1. Crea un nuevo archivo en src/pages/posts/tu-nuevo-post.md
 2. Añade el siguiente frontmatter (encabezado) al inicio del archivo:
 
+```md
 ---
 layout: '../../layouts/BlogPostLayout.astro'
 title: 'Título de tu artículo'
