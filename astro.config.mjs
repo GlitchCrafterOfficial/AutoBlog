@@ -3,12 +3,12 @@ import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
-const liveURL = 'https://glitchcrafter.github.io';
+const liveURL = 'https://glitchcrafterofficial.github.io';
 
 // https://astro.build/config
 export default defineConfig({
   site: liveURL,
-  base: '/glitchcrafter.github.io/',
+  base: '/',
   vite: {
     plugins: [tailwindcss()]
   }
